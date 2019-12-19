@@ -31,8 +31,9 @@ The application implements a simple IMDB clone application consisting of:
 - [Rails](http://rubyonrails.org/) - version 6.0.0
 - [Rspec](http://rspec.info/) - version 3.9.0
 
-## Setup to Local Machine
+## Setup
 
+Application is deployed to Heroku. Here's described how to install the application on local machine.
 The application setup flow is described for [Ubuntu](https://ubuntu.com/) and should be similar to other UNIX-like systems.
 
 ### Data Base Setup 
