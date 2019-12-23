@@ -1,0 +1,59 @@
+Would the developer be open to doing a test assignment that we give to all hires?
+
+Using Ruby on Rails create a IMDB clone.
+
+- Movie: Title, Text, Ratings, Category
+
+- Ratings system from 1-10 available to registered users
+
+- Home page that shows all movies and ability to filter movies by categories (URL driven and SEO Friendly)
+
+- Movie Details Page that shows average rating
+
+- From Home page it is possible to provide a quick star rating without reloading a page.
+
+- Admin Interface to manage movies (CRUD)
+
+- Pagination of Movies on Home Page
+
+- Deploy application to cloud server like a Heroku or DigitalOcean
+
+- Provide test coverage for the app using rspec or TDD
+
+- Use bootstrap or similar for the UI
+
+He would spend 3-4 hours and build something rough so we get enough idea of their coding skills. 
+Put the code on GitHub and send us the link. We would then do a call to discuss his design choices and the code.
+
+
+rails generate controller home index show update
+
+opera --proxy-server="87.255.70.183:8080"
+
+bootstrap
+devise
+pundit
+
+rails generate scaffold category title:string
+
+rails generate scaffold movie title:string description:text category_id:integer
+
+rails generate scaffold rating vote:integer movie_id:integer user_id:integer
+
+rails generate migration movies_categories category_id:integer movie_id:integer
+
+
+
+https://github.com/ahwanghwa/imdblike.git
+
+git config --global user.name Alex
+git config --global user.email ahwanghwa@gmail.com
+
+Category.friendly.find("adventure").movies.where("lower(title) LIKE ?", "%mov%")
+
+
+
+rails g migration AddSlugToMovies slug:uniq
+rails g migration AddSlugToCategories slug:uniq
+
+

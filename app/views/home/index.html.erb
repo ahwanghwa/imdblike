@@ -1,0 +1,40 @@
+<div class="row">
+  <%= render partial: 'search_fields' %>
+</div>
+
+<table style="border: solid 1px">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Rating</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.description %></td>
+      <td><%= movie.category.title if movie.category %></td>
+      <td>
+        <% 10.times do |i| %>
+          <%= render 'layouts/rating', max: i + 1, movie: movie %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+
+  <script>
+      $(document).ready(function () {
+          $('.post-rating').on('ajax:success', function (e, data, status, xhr) {
+              var stars = $(this).parent('td').find('.fa-star');
+              stars.addClass('checked');
+              stars.slice(0, e.originalEvent.detail[0].rating).removeClass('checked');
+          });
+      });
+  </script>
+
+</table>

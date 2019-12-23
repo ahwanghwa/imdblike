@@ -1,7 +1,70 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+user = User.create!(role: :admin, email: 'admin@domain', password: 'admin@domain')
+
+categories = Category.create([{ title: 'Crime' },
+                              { title: 'Comedy' },
+                              { title: 'Adventure' },
+                              { title: 'Drama' },
+                              { title: 'Mystery' },
+                              { title: 'Horror' },
+                              { title: 'Animation' }])
+
+movies = Movie.create([{ title: 'Joker', category_id: categories.sample.id },
+                       { title: 'The Farewell', category_id: categories.sample.id },
+                       { title: 'Ad Astra', category_id: categories.sample.id },
+                       { title: 'Once Upon a Time in Hollywood', category_id: categories.sample.id },
+                       { title: 'Parasite', category_id: categories.sample.id },
+                       { title: 'Bohemian Rhapsody', category_id: categories.sample.id },
+                       { title: 'John Wick', category_id: categories.sample.id },
+                       { title: 'Us', category_id: categories.sample.id },
+                       { title: 'Avengers', category_id: categories.sample.id },
+                       { title: 'Jumanji', category_id: categories.sample.id },
+                       { title: 'Doctor Sleep', category_id: categories.sample.id },
+                       { title: 'The Irishman', category_id: categories.sample.id },
+                       { title: 'Marriage Story', category_id: categories.sample.id },
+                       { title: 'Booksmart', category_id: categories.sample.id },
+                       { title: 'Long Shot', category_id: categories.sample.id },
+                       { title: 'Glass', category_id: categories.sample.id },
+                       { title: 'One Cut of the Dead', category_id: categories.sample.id },
+                       { title: 'The White Crow', category_id: categories.sample.id },
+                       { title: 'The King', category_id: categories.sample.id },
+                       { title: 'Overlord', category_id: categories.sample.id },
+                       { title: 'Toy Story 4', category_id: categories.sample.id },
+                       { title: 'The Hate U Give', category_id: categories.sample.id },
+                       { title: 'Blinded by the Light', category_id: categories.sample.id },
+                       { title: 'Midsommar', category_id: categories.sample.id },
+                       { title: 'Wildlife', category_id: categories.sample.id },
+                       { title: 'A Private War', category_id: categories.sample.id },
+                       { title: 'How to Train Your Dragon', category_id: categories.sample.id },
+                       { title: 'Ready or Not', category_id: categories.sample.id },
+                       { title: 'Brightburn', category_id: categories.sample.id },
+                       { title: 'The Mule', category_id: categories.sample.id },
+                       { title: 'Mid90s', category_id: categories.sample.id },
+                       { title: 'Beautiful Boy', category_id: categories.sample.id },
+                       { title: 'Instant Family', category_id: categories.sample.id },
+                       { title: 'Shoplifters', category_id: categories.sample.id },
+                       { title: 'Creed II', category_id: categories.sample.id },
+                       { title: 'Childs Play', category_id: categories.sample.id },
+                       { title: 'The Art of Self-Defense', category_id: categories.sample.id },
+                       { title: 'Haunt', category_id: categories.sample.id },
+                       { title: ' Bad Times at the El Royale', category_id: categories.sample.id },
+                       { title: 'Buy Me a Gun', category_id: categories.sample.id },
+                       { title: 'Spider-Man Into the Spider-Verse ', category_id: categories.sample.id },
+                       { title: 'The Report', category_id: categories.sample.id },
+                       { title: 'Late Night', category_id: categories.sample.id },
+                       { title: 'Skin', category_id: categories.sample.id },
+                       { title: 'The Peanut Butter Falcon', category_id: categories.sample.id },
+                       { title: 'El Camino', category_id: categories.sample.id },
+                       { title: 'It Chapter Two', category_id: categories.sample.id },
+                       { title: 'Stockholm', category_id: categories.sample.id },
+                       { title: 'The Dirt', category_id: categories.sample.id },
+                       { title: 'The Favourite', category_id: categories.sample.id },
+                       { title: 'Aladdin', category_id: categories.sample.id },
+                       { title: 'Crawl', category_id: categories.sample.id },
+                       { title: 'The Great Battle', category_id: categories.sample.id },
+                       { title: 'Furie', category_id: categories.sample.id },
+                       { title: 'Dragged Across Concrete', category_id: categories.sample.id },
+                       { title: 'Extreme Job', category_id: categories.sample.id }])
+
+100.times do
+  Rating.create!([{ movie_id: movies.sample.id, user_id: user.id, vote: Random.rand(10) }])
+end

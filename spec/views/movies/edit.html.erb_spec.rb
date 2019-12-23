@@ -1,24 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe "movies/edit", type: :view do
+RSpec.describe 'movies/edit', type: :view do
   before(:each) do
     @movie = assign(:movie, Movie.create!(
-      :title => "MyString",
-      :description => "MyText",
-      :category_id => 1
-    ))
+                              title: 'MyString',
+                              description: 'MyText',
+                              category_id: 1
+                            ))
   end
 
-  it "renders the edit movie form" do
+  it 'renders the edit movie form' do
     render
 
-    assert_select "form[action=?][method=?]", movie_path(@movie), "post" do
+    assert_select 'form[action=?][method=?]', movie_path(@movie), 'post' do
+      assert_select 'input[name=?]', 'movie[title]'
 
-      assert_select "input[name=?]", "movie[title]"
+      assert_select 'textarea[name=?]', 'movie[description]'
 
-      assert_select "textarea[name=?]", "movie[description]"
-
-      assert_select "input[name=?]", "movie[category_id]"
+      assert_select 'input[name=?]', 'movie[category_id]'
     end
   end
 end

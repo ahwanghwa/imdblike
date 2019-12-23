@@ -1,0 +1,13 @@
+<%= form_with(url: home_index_url, method: :get, local: true, class: 'col-12 text-left mt-2') do |form| %>
+  <div class="row my-2">
+    <div class="col-3">
+      <%= select_tag :category, options_from_collection_for_select(Category.all, :slug, :title, request.params[:category]), prompt: 'Any Category', class: 'custom-select' %>
+    </div>
+    <div class="col-6">
+      <%= text_field_tag(:title, request.params[:title], placeholder: 'Search Movie', class: 'form-control') %>
+    </div>
+    <div class="col-1 px-0 text-right">
+      <%= submit_tag('Search', class: 'btn btn-primary') %>
+    </div>
+  </div>
+<% end %>

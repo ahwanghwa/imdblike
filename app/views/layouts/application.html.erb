@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Imdblike</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Imdblike</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!-- Font Awesome Icon Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
+  <a href="" class="navbar-brand">IMDBLike</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <% if current_user %>
+        <li class="nav-item">
+          <span>Welcome, <%= current_user.email %> !</span>
+          <%= link_to('Logout', destroy_user_session_path, :method => 'delete', class: 'btn btn-primary mr-auto') %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to('Sign up', new_user_registration_path, class: 'btn btn-primary mr-auto') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to('Log in', new_user_session_path, class: 'btn btn-primary mr-auto') %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <% if flash[:success] %>
+    <div class="alert alert-success fade show" role="alert"><%= flash[:success] %></div>
+  <% end %>
+  <%= yield %>
+</div>
+</body>
 </html>
